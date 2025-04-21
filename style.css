@@ -1,0 +1,166 @@
+:root {
+    --gummetal: #111213;
+    --celestial-blue: #3E92CC;
+    --desert-sand: #E4C3AD;
+    --misty-rose: #FAE1DF;
+    --light-green: #71F79F;
+
+    --darker-blue: #4654d3;
+    --blue-border: #18D8FF;
+
+    background-color: var(--gummetal);
+}
+
+@font-face {
+    font-family: Vipnagorgialla;
+    src: url("fonts/Vipnagorgialla\ Rg.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Vipnagorgialla;
+    font-weight: bold;
+    src: url("fonts/Vipnagorgialla\ Bd.otf") format("opentype");
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-1080px);
+    }
+}
+
+body {
+    z-index: 1;
+    overflow: hidden;
+}
+
+.bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    transform: translateZ(0);
+}
+
+.bubbles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 50%;
+    bottom: -100px;
+    animation: float infinite;
+    animation-timing-function: linear;
+}
+
+.blue-bubble {
+    --color: #4654d3;
+}
+
+.red-bubble {
+    --color: #e04848;
+}
+
+.lightblue-bubble {
+    --color: #75c4ee;
+}
+
+.blue-bubble,
+.red-bubble,
+.lightblue-bubble {
+    box-shadow:
+        0 0 8px 4px var(--color),
+        inset 0 0 24px 4px var(--color)
+}
+
+.menu {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    background-color: rgba(1, 1, 1, .6);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 90vh;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menu button {
+    --white-stripe: rgba(255, 255, 255, 0.308);
+    --null-stripe: transparent;
+
+    background: transparent;
+    background-image: linear-gradient(0deg, var(--white-stripe) 13.64%, var(--null-stripe) 13.64%, var(--null-stripe) 50%, var(--white-stripe) 50%, var(--white-stripe) 63.64%, var(--null-stripe) 63.64%, var(--null-stripe) 100%);
+    background-size: 22.00px 16.00px;
+    width: 100%;
+    height: 100%;
+    font-weight: 900;
+    height: 50px;
+    animation: forwards;
+    color: #00335E;
+
+    font-family: 'Vipnagorgialla';
+    font-weight: bold;
+    text-shadow: 1px 1px 2px white;
+
+    border-top: var(--blue-border) 2px solid;
+    border-left: var(--blue-border) 2px solid;
+    border-right: var(--gummetal) 2px solid;
+    border-bottom: var(--gummetal) 2px solid;
+}
+
+.menu #ButtonBg {
+    background: linear-gradient(90deg, rgba(16, 138, 225, 1) 0%, rgba(20, 29, 91, 1) 100%);
+    top: 10rem;
+    position: relative;
+    opacity: 0;
+    transition: top 3s cubic-bezier(0.075, 0.82, 0.165, 1), 
+        opacity 4s linear;
+}
+
+
+.menu #ButtonBg.fade-in {
+    top: 0;
+    opacity: 1;
+}
+
+.menu #ButtonBg:nth-child(6){
+    opacity: .3;
+}
+
+.menu #ButtonBg:nth-child(1n+2) {
+    margin-top: 2rem;
+}
+
+.menu button:enabled:hover,
+.menu button:enabled:active {
+    color: white;
+    text-shadow: 1px 1px 2px var(--darker-blue);
+    border: white 2px solid;
+}
+
+.menu button:disabled {
+    cursor: not-allowed;
+    opacity: .4;
+}
+
+@media (min-width: 993px){
+    .menu button{
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 992px) {
+    .menu button {
+        font-size: 20px;
+    }
+}
